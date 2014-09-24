@@ -21,12 +21,17 @@ import javax.persistence.TypedQuery;
 public class CustomerList {
     @PersistenceContext(unitName = "WebApplicationJavaPU")
     private EntityManager em;
-    public List<Customer> getMenuItems(){
-        TypedQuery<Customer> menuItemQuery = 
-            em.createNamedQuery("Customer.findAll", Customer.class);
-        return menuItemQuery.getResultList();
+    
+    public List<Customer_1> getCustomers(){
+        TypedQuery<Customer_1> customersQuery = 
+            em.createNamedQuery("Customer_1.findAll", Customer_1.class);
+        return customersQuery.getResultList();
     }
-    public String getHello(){
-        return "HELLO!";
-    }
+    
+    /*public  Customer_1 getFirstName(String name){
+        TypedQuery<Customer_1> customerByNameQuery = 
+            em.createNamedQuery("Customer_1.findByName", Customer_1.class);
+        //return customersQuery.getResultList();
+        return customerByNameQuery.setParameter("name", name).getSingleResult();
+    }*/
 }
