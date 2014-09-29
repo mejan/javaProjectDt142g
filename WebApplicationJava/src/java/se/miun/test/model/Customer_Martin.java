@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
 
-public class Customer implements Serializable {
+public class Customer_Martin implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -68,10 +68,10 @@ public class Customer implements Serializable {
     @ManyToOne(optional = false)
     private MicroMarket zip;
 
-    public Customer() {
+    public Customer_Martin() {
     }
 
-    public Customer(Integer customerId) {
+    public Customer_Martin(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -173,10 +173,10 @@ public class Customer implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Customer)) {
+        if (!(object instanceof Customer_Martin)) {
             return false;
         }
-        Customer other = (Customer) object;
+        Customer_Martin other = (Customer_Martin) object;
         if ((this.customerId == null && other.customerId != null) || (this.customerId != null && !this.customerId.equals(other.customerId))) {
             return false;
         }

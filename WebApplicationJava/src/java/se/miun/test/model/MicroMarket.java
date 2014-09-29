@@ -50,7 +50,7 @@ public class MicroMarket implements Serializable {
     @Column(name = "AREA_WIDTH")
     private Double areaWidth;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "zip")
-    private Collection<Customer> customerCollection;
+    private Collection<Customer_Martin> customerCollection;
 
     public MicroMarket() {
     }
@@ -92,11 +92,11 @@ public class MicroMarket implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Customer> getCustomerCollection() {
+    public Collection<Customer_Martin> getCustomerCollection() {
         return customerCollection;
     }
 
-    public void setCustomerCollection(Collection<Customer> customerCollection) {
+    public void setCustomerCollection(Collection<Customer_Martin> customerCollection) {
         this.customerCollection = customerCollection;
     }
 
