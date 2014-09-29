@@ -1,4 +1,4 @@
 javaProjectDt142g
 =================
 
-Projrct in a university assignment.
+Project in a university assignment.
