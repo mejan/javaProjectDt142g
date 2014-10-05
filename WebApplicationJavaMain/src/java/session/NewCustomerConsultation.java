@@ -7,7 +7,6 @@ package session;
 
 import java.util.Date;
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.RollbackException;
