@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.2.7.1
--- http://www.phpmyadmin.net
---
--- Värd: localhost
--- Tid vid skapande: 02 okt 2014 kl 18:06
--- Serverversion: 5.6.20
--- PHP-version: 5.5.15
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -16,17 +9,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Databas: `ProjectJavaDB`
---
+
 CREATE DATABASE IF NOT EXISTS `ProjectJavaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `ProjectJavaDB`;
-
--- --------------------------------------------------------
-
---
--- Tabellstruktur `Consultation`
---
 
 CREATE TABLE IF NOT EXISTS `Consultation` (
 `consultationID` int(10) NOT NULL,
@@ -37,9 +22,6 @@ CREATE TABLE IF NOT EXISTS `Consultation` (
   `accepted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=13 ;
 
---
--- Dumpning av Data i tabell `Consultation`
---
 
 INSERT INTO `Consultation` (`consultationID`, `customerID`, `date`, `time`, `description`, `accepted`) VALUES
 (1, 7, '2014-10-02', '09:00:34', 'keso', 1),
@@ -55,12 +37,6 @@ INSERT INTO `Consultation` (`consultationID`, `customerID`, `date`, `time`, `des
 (11, 21, '2014-10-02', '14:15:35', 'regeN baklänges?', 0),
 (12, 22, '2014-10-02', '17:19:46', 'helangÃ¥Ã¥r', 0);
 
--- --------------------------------------------------------
-
---
--- Tabellstruktur `Customer`
---
-
 CREATE TABLE IF NOT EXISTS `Customer` (
 `customerID` int(10) NOT NULL,
   `name` varchar(15) COLLATE utf8_bin NOT NULL,
@@ -69,9 +45,6 @@ CREATE TABLE IF NOT EXISTS `Customer` (
   `phoneNumber` varchar(15) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=23 ;
 
---
--- Dumpning av Data i tabell `Customer`
---
 
 INSERT INTO `Customer` (`customerID`, `name`, `lastName`, `email`, `phoneNumber`) VALUES
 (3, 'Anton', 'Dahlin', 'anton.dahlin@outlook.com', '0738187707'),
@@ -85,11 +58,7 @@ INSERT INTO `Customer` (`customerID`, `name`, `lastName`, `email`, `phoneNumber`
 (21, 'Robin', 'Jansson', 'robin.jansson@hotmale.com', '0702190262'),
 (22, 'Keso', 'Balle', 'jesus@lever.se', 'r2435646');
 
--- --------------------------------------------------------
 
---
--- Tabellstruktur `Guitars`
---
 
 CREATE TABLE IF NOT EXISTS `Guitars` (
   `guitarrID` int(10) NOT NULL,
@@ -100,11 +69,6 @@ CREATE TABLE IF NOT EXISTS `Guitars` (
   `imagePath` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
-
---
--- Tabellstruktur `Reparations`
---
 
 CREATE TABLE IF NOT EXISTS `Reparations` (
   `repairID` int(10) NOT NULL,
@@ -115,79 +79,39 @@ CREATE TABLE IF NOT EXISTS `Reparations` (
   `done` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
-
---
--- Tabellstruktur `SpareParts`
---
-
 CREATE TABLE IF NOT EXISTS `SpareParts` (
   `spareID` varchar(10) COLLATE utf8_bin NOT NULL,
   `name` varchar(20) COLLATE utf8_bin NOT NULL,
   `price` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Index för dumpade tabeller
---
 
---
--- Index för tabell `Consultation`
---
 ALTER TABLE `Consultation`
  ADD PRIMARY KEY (`consultationID`), ADD KEY `FK_consultation` (`customerID`);
 
---
--- Index för tabell `Customer`
---
 ALTER TABLE `Customer`
  ADD PRIMARY KEY (`customerID`);
 
---
--- Index för tabell `Guitars`
---
 ALTER TABLE `Guitars`
  ADD PRIMARY KEY (`guitarrID`);
 
---
--- Index för tabell `Reparations`
---
+
 ALTER TABLE `Reparations`
  ADD PRIMARY KEY (`repairID`), ADD KEY `FK_reparations` (`customerID`);
 
---
--- Index för tabell `SpareParts`
---
 ALTER TABLE `SpareParts`
  ADD PRIMARY KEY (`spareID`);
 
---
--- AUTO_INCREMENT för dumpade tabeller
---
 
---
--- AUTO_INCREMENT för tabell `Consultation`
---
 ALTER TABLE `Consultation`
 MODIFY `consultationID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT för tabell `Customer`
---
+
 ALTER TABLE `Customer`
 MODIFY `customerID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
---
--- Restriktioner för dumpade tabeller
---
 
---
--- Restriktioner för tabell `Consultation`
---
 ALTER TABLE `Consultation`
 ADD CONSTRAINT `FK_consultation` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Restriktioner för tabell `Reparations`
---
 ALTER TABLE `Reparations`
 ADD CONSTRAINT `FK_reparations` FOREIGN KEY (`customerID`) REFERENCES `Customer` (`customerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 

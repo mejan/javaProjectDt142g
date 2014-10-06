@@ -6,7 +6,6 @@
 package session;
 
 import java.util.List;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -38,28 +37,15 @@ public class CustomerList {
                 em.createNamedQuery("Customer.findByName", Customer.class);
         return customerByNameQuery.setParameter("name", name).getResultList();
     }
+    public List<Customer> getCustomersByEmail(String email){
+        TypedQuery<Customer> customerByEmailQuery= 
+            em.createNamedQuery("Customer.findByEmail", Customer.class);
+        return customerByEmailQuery.setParameter("email", email).getResultList();
+    }
     
     public void addCustomer(Customer customer){
         em.persist(customer);
         em.flush();
         em.clear();
     }
-    /*public void persist(Customer customer) {
-        em.persist(customer);
-    }*/
-
-    
-    /*public void add(){
-    
-        //customer = new Customer();
-        
-        
-        
-    public  Customer getFirstName(String name){
-        TypedQuery<Customer_1> customerByNameQuery = 
-            em.createNamedQuery("Customer.findByName", Customer.class);
-        //return customersQuery.getResultList();
-        return customerByNameQuery.setParameter("name", name).getSingleResult();
-    }
-    }*/
 }

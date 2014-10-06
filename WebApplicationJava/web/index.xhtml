@@ -9,9 +9,8 @@
     </h:head>
     <h:body>
         Hello from Earth<hr/>
-        <c:forEach items="#{customerList.customers}" var="item">
-        <h:outputText value="#{item.name}" />,
-        <h:outputText value="#{item.lastName}" />
+        <c:forEach items="#{customerList.getCustomersByEmail('rapemyass@xxx.c')}" var="item">
+        <h:outputText value="#{item.name}" />
         <hr/>
         </c:forEach>
         
