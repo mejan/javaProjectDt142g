@@ -85,6 +85,14 @@ CREATE TABLE IF NOT EXISTS `SpareParts` (
   `price` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE IF NOT EXISTS `News` (
+  `newsID` int(10) COLLATE utf8_bin NOT NULL,
+  `newsText` varchar(255) COLLATE utf8_bin NOT NULL,
+  `newsImage` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+ALTER TABLE `News`
+ ADD PRIMARY KEY (`newsID`);
 
 ALTER TABLE `Consultation`
  ADD PRIMARY KEY (`consultationID`), ADD KEY `FK_consultation` (`customerID`);
@@ -102,6 +110,8 @@ ALTER TABLE `Reparations`
 ALTER TABLE `SpareParts`
  ADD PRIMARY KEY (`spareID`);
 
+ALTER TABLE `News`
+MODIFY `newsID` int(10) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `Consultation`
 MODIFY `consultationID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
