@@ -35,6 +35,10 @@ public class GuitarList {
     public List<Guitars> getGuitarsByGuitarrID(int id){
         return em.createNamedQuery("Guitars.findByGuitarrID", Guitars.class).setParameter("guitarrID", id).getResultList();
     }
+    public void addGuitar(Guitars guitars){
+        em.persist(guitars);
+        em.flush();
+    }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
