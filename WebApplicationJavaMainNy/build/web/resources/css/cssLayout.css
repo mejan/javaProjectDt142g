@@ -1,0 +1,163 @@
+#top {
+    position: relative;
+    background-color: white;
+    color: white;
+}
+#header {
+    height: 140px;
+    float:right;
+}
+#bottom {
+    position: relative;
+    background-color: white;
+    height: 160px;
+}
+#content {
+    width:960px;
+    height:1000px;
+}
+#wrapper {
+    min-height:100%;
+    width:960px;
+    margin: auto;
+    position: relative;
+    background: white;
+    border: 1px solid lightgrey;
+}
+#logo{
+    margin-left: 30px;
+	position: absolute;
+}
+#footer li{
+	float:left;
+	width: 285px;
+	margin-top: -20px;
+	border-right:1px solid lightgrey;
+	list-style-type: none;
+	height: 157px;
+	text-align: center;
+}
+#footer li:first-child {
+	border-left: 1px solid lightgrey;
+}
+#footerBanner {
+	width: 100%;
+	position:absolute;
+	right:0;
+	left:0; 
+	bottom:0;
+	padding-bottom: 160px;
+}
+#footerBanner img{
+	width:100%;
+}
+#footer {
+	position:absolute;
+	bottom:0;
+	width:960px;
+	height:160px;   /* Height of the footer */
+}
+#front-page li{
+	float:left;
+	width: 285px;
+	border-right:1px solid lightgrey;
+	list-style-type: none;
+	height: 750px;
+	text-align: center;
+}
+#front-page li:first-child {
+	border-left: 1px solid lightgrey;
+}
+#articleImage {
+    display:block;
+	padding:100px;
+    margin:auto;
+}
+#newsImage {
+
+}
+.booking {
+	margin-left: 25%;
+}
+.booking ul {
+    width:590px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px;
+    padding:0px;
+}
+.booking li{
+    padding:12px; 
+}
+.booking label { 
+    width:150px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+.booking input { 
+    height:25px; 
+    width:250px; 
+    padding:5px 8px;
+	padding-right:30px;
+	border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+}
+.booking input:focus{ 
+    background: #fff; 
+    border:1px solid #555; 
+    box-shadow: 0 0 3px #aaa; 
+}
+.booking textarea {
+	width: 285px;
+	height:90px; 
+	resize: none;
+}
+.booking table td {
+    border:1px solid lightblue;
+    padding: 5px;
+    height:13px;
+    width:45px;
+    font-size: 12px;
+}
+#day {
+    float:right;
+    margin-right:50px;
+}
+#schedule {
+    float:right;
+    margin-right:50px;
+}
+#time {
+    float:left;
+    margin-top:-5px;
+}
+#about {
+ text-align: center;
+ font-family: verdana;
+ margin-top: 10px;
+}
+#about_company{
+ margin: auto;
+ width: 60%;
+ font-size: 12px;
+}
+#about img{
+ padding: 0px;
+}
+#about_text{
+ font-size: 12px;
+}
+#contact_map{
+ float: left;
+ margin-left:20px;
+ margin-top:50px;
+}
+#contact_inf{
+ margin-top: 50px;
+ margin-left: 20px;
+ float: left;
+}
+#contact_inf li{
+ list-style: none;
+}

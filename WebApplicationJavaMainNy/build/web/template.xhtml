@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+    <div id="wrapper">
+        <div id="top">
+            <a href="index.xhtml"><h:graphicImage id="logo" value="resources/image/logo.png"/></a>
+            <div id="header">	
+                <nav id="menu">
+                    <a href="gallery.xhtml">Galleri</a>
+                    <a href="about.xhtml">Om företaget</a>
+                    <a href="contact.xhtml">Kontakt</a>
+                    <a href="booking.xhtml">Bokning</a>
+                </nav>
+            </div>
+            <div id="banner">
+                <img src="resources/image/banner.png" alt="banner"></img>
+            </div>
+        </div>
+        <div id="content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+        <div id="bottom">
+            <div id="footerBanner">
+                <img src="resources/image/footerBanner.png" alt="footerBanner"></img>
+            </div>
+            <div id="footer">
+                <ul>
+                    <li>
+                        <article>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</article>
+                    </li>
+                    <li>
+                        <article>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</article>
+                    </li>
+                    <li>
+                        <article>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</article>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+    </h:body>
+
+</html>
