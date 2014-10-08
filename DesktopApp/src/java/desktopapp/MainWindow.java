@@ -1,5 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
+/* 
+* To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package desktopapp;
@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import soldpage.SoldPage;
 import startpage.Schedule;
+import webAdminPage.WebbAdmin;
 
 /**
  *
@@ -24,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         //set the private varible to objects.
         fPage = new Schedule();
         sPage = new SoldPage();
+        tPage = new WebbAdmin();
         add(fPage, BorderLayout.WEST);
         pack();
         
@@ -51,6 +53,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     }// </editor-fold>//GEN-END:initComponents
     private static Schedule fPage;
     private static SoldPage sPage;
+    private static WebbAdmin tPage;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private desktopapp.MainMenu mainMenu1;
     // End of variables declaration//GEN-END:variables
@@ -58,6 +61,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mainMenu1.homeButton){
+            this.get
             remove(sPage);
             add(fPage,BorderLayout.WEST);
             pack();
