@@ -15,6 +15,7 @@ public class VetCounter extends javax.swing.JPanel {
      */
     public VetCounter() {
         initComponents();
+        addSold = new InputContainerVetCounter();
     }
 
     /**
@@ -48,6 +49,11 @@ public class VetCounter extends javax.swing.JPanel {
         dateTextField.setText("yyyy-mm-dd");
 
         addSoldButton.setText("Lägg till");
+        addSoldButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSoldButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,6 +103,15 @@ public class VetCounter extends javax.swing.JPanel {
                 .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addSoldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSoldButtonActionPerformed
+        // TODO add your handling code here:
+        addSold.setProduct(prodTextField.getText());
+        addSold.setDate(dateTextField.getText());
+        addSold.setPrice(Double.parseDouble(priceTextField.getText()));
+    }//GEN-LAST:event_addSoldButtonActionPerformed
+
+    private InputContainerVetCounter addSold;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSoldButton;
     private javax.swing.JLabel dateLabel;
