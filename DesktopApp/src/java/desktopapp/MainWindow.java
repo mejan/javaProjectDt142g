@@ -61,15 +61,21 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mainMenu1.homeButton){
-            this.get
+            //this.get
             remove(sPage);
+            remove(tPage);
             add(fPage,BorderLayout.WEST);
             pack();
         } else if(e.getSource() == mainMenu1.vetButton){
             remove(fPage);
+            remove(tPage);
             add(sPage,BorderLayout.WEST);
             pack();
         } else if(e.getSource() == mainMenu1.webAdminButton){
+            remove(sPage);
+            remove(fPage);
+            add(tPage,BorderLayout.WEST);
+            pack();
             
         }
     }

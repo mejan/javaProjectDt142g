@@ -5,13 +5,20 @@
 package webAdminPage;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -24,6 +31,7 @@ public class WebbAdmin extends javax.swing.JPanel {
      */
     public WebbAdmin() {
         initComponents();
+        
     }
 
     /**
@@ -70,53 +78,46 @@ public class WebbAdmin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void laddaUppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laddaUppActionPerformed
-        // fileChooser filechooser = new fileChooser();
+  
         JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int res = chooser.showOpenDialog(WebbAdmin.this);
+            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+          
 
-        if (res == JFileChooser.APPROVE_OPTION) {
-
-            File file = chooser.getSelectedFile();
-
-            // Creating ImageIcon out of the selected file
-            ImageIcon image = new ImageIcon(file.getAbsolutePath());
-            Image img = image.getImage();
-            BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-            Graphics g = bi.createGraphics();
-
-            // Get width and height of picLabel
+            chooser.setAcceptAllFileFilterUsed(false);
+            chooser.addChoosableFileFilter(new FileNameExtensionFilter("Images", "jpg", "png", "gif", "bmp"));
+            int res = chooser.showOpenDialog(WebbAdmin.this);
             Rectangle rect = picLabel.getBounds();
-            g.drawImage(img, 0, 0,170,170, null);
+            
 
-            // Scaling the Image to fit in the picLabel
-            //Image scaledImage = image.getImage().getScaledInstance(rect.width, rect.height, Image.SCALE_DEFAULT);
-            // Converting the image back to ImageIcon to make it acceptable by picLabel
-            image = new ImageIcon(bi);
+            
+            if (res == JFileChooser.APPROVE_OPTION) {
 
-            picLabel.setIcon(image);
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Dialog cancelled by the user");
-        }
+                
+                File file = chooser.getSelectedFile();
+                ImageIcon image = new ImageIcon(file.getAbsolutePath());
+                Image scaledImage = image.getImage().getScaledInstance(rect.width, rect.height, Image.SCALE_DEFAULT);
+                image = new ImageIcon(scaledImage);
+                picLabel.setIcon(image);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Dialog cancelled by the user");
+            }
 
-        // filechooser.setVisible(rootPaneCheckingEnabled);
-        //  File file = filechooser.getSelectedFile();
-        //ImageInJframe test = new ImageInJframe();
-        //picture1.add(test);
-        /*  BufferedImage myPicture = null;
-        try {
-            myPicture = ImageIO.read(new File("C:\\Users\\Ludde\\Dropbox\\Universitet\\civil\\3\\Applikationsuteckling i java\\Projekt\\1.jpg"));
-        } catch (IOException ex) {
-            Logger.getLogger(WebbAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+            
+            
 
-        */
+
     }//GEN-LAST:event_laddaUppActionPerformed
 
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton laddaUpp;
-    private javax.swing.JLabel picLabel;
+    public javax.swing.JLabel picLabel;
     // End of variables declaration//GEN-END:variables
+
+
 }
+
+
