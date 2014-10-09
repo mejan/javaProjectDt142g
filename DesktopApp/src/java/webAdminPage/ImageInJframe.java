@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  */
 
 
-class ImageImplement extends JPanel{
+/*class ImageImplement extends JPanel{
     private Image img;
     	  public ImageImplement(Image img) {
 	    this.img = img;
@@ -64,4 +64,4 @@ public class ImageInJframe extends JFrame{
         setSize(190,190);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-}
+}*/
