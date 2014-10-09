@@ -41,18 +41,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="dateTextField" pref="186" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="vetLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="vetTextField" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="vetProcSignLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
               <Component id="addSoldButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -66,26 +59,20 @@
                   <Component id="prodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="prodTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="priceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="priceUnitLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="priceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="dateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="vetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="vetProcSignLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="vetTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
               <Component id="addSoldButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,18 +106,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="vetLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Skriv in moms procenten: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="vetProcSignLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="%"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="vetTextField">
     </Component>
     <Component class="javax.swing.JButton" name="addSoldButton">
       <Properties>

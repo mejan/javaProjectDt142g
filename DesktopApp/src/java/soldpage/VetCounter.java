@@ -33,9 +33,6 @@ public class VetCounter extends javax.swing.JPanel {
         priceTextField = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         dateTextField = new javax.swing.JTextField();
-        vetLabel = new javax.swing.JLabel();
-        vetProcSignLabel = new javax.swing.JLabel();
-        vetTextField = new javax.swing.JTextField();
         addSoldButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(148, 148, 148));
@@ -49,10 +46,6 @@ public class VetCounter extends javax.swing.JPanel {
         dateLabel.setText("Datum den såldes:");
 
         dateTextField.setText("yyyy-mm-dd");
-
-        vetLabel.setText("Skriv in moms procenten: ");
-
-        vetProcSignLabel.setText("%");
 
         addSoldButton.setText("Lägg till");
 
@@ -76,16 +69,10 @@ public class VetCounter extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(dateLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(vetLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vetTextField)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vetProcSignLabel)))
+                        .addComponent(dateTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
+                .addGap(140, 140, 140)
                 .addComponent(addSoldButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -96,23 +83,18 @@ public class VetCounter extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prodLabel)
                     .addComponent(prodTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceLabel)
                     .addComponent(priceUnitLabel)
                     .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateLabel)
                     .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vetLabel)
-                    .addComponent(vetProcSignLabel)
-                    .addComponent(vetTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(addSoldButton)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -124,8 +106,5 @@ public class VetCounter extends javax.swing.JPanel {
     private javax.swing.JLabel priceUnitLabel;
     private javax.swing.JLabel prodLabel;
     private javax.swing.JTextField prodTextField;
-    private javax.swing.JLabel vetLabel;
-    private javax.swing.JLabel vetProcSignLabel;
-    private javax.swing.JTextField vetTextField;
     // End of variables declaration//GEN-END:variables
 }
