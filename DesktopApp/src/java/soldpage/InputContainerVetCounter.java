@@ -24,14 +24,17 @@ public class InputContainerVetCounter {
     
     void setProduct(String pro){
         product = pro;
+        System.out.println(product);
     }
     
     void setDate(String da){
         date = da;
+        System.out.println(date);
     }
     
     void setPrice(double pri){
         price=pri;
+        System.out.println(price);
     }
     
     String getProduct(){
