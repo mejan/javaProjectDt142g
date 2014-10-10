@@ -5,9 +5,13 @@
  */
 package entappclient;
 
+import ejb.ConsultationListRemote;
 import ejb.CustomerListRemote;
+import ejb.NewReparationsRemote;
 import ejb.TestSessionBeanRemote;
+import entities.Consultation;
 import entities.Customer;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 
@@ -16,6 +20,10 @@ import javax.ejb.EJB;
  * @author antondahlin
  */
 public class Main {
+    @EJB
+    private static NewReparationsRemote newReparations;
+    @EJB
+    private static ConsultationListRemote consultationList;
     @EJB
     private static CustomerListRemote customerList;
     @EJB
@@ -30,11 +38,21 @@ public class Main {
         System.out.println("Resultatet är: " + testSessionBean.getResult());
         System.out.println("Resultatet är: " + customerList.getTest());
         
-        List<Customer> lista = customerList.getCustomers();
+        List<Customer> customerlist = customerList.getCustomers();
+        List<Consultation> consultationlist = consultationList.getConsultationByAccepted(false);
+       
+        Date datee = new Date();
         
-        
-        for(Customer keso: lista){
-            System.out.println(keso.getName() + " " +  keso.getLastName());
+        for(Customer it: customerlist){
+            System.out.println(it.getName() + " " +  it.getLastName());
         }   
+        
+        for(Consultation it: consultationlist){
+            System.out.println(it.getCustomerID().getName() + " " + it.getCustomerID().getLastName() + " HAVE CONSULTATION AT: " + it.getTime() + " : " + it.getDate());
+        }
+        
+        //Consultation consultation = consultationList.getConsultationByAccepted(false).get(0);
+        
+        //newReparations.add(consultation.getCustomerID(), 2, "images/resource", datee, datee);
     }
 }
