@@ -8,6 +8,7 @@ package ejb;
 import entities.Customer;
 import java.util.Date;
 import javax.ejb.Remote;
+import javax.ejb.Stateless;
 
 /**
  *
@@ -16,8 +17,30 @@ import javax.ejb.Remote;
 @Remote
 public interface NewReparationsRemote {
     
-    //void add();
-    void add(Customer customerID, int hoursWorked, String imagePath, Date recieved, Date done);
+    void add();
+    //void add(Customer customerID, int hoursWorked, String imagePath, Date recieved, Date done);
     //void setCustomerID(Customer customerID);
+    Customer getCustomerID();
     
+    /*int getCustomerIDINT();
+    
+    void setCustomerIDINT(int customerID);*/
+    
+    void setCustomerID(Customer customerID);
+
+    int getHoursWorked();
+
+    void setHoursWorked(int hoursWorked);
+
+    String getImagePath();
+
+    void setImagePath(String imagePath);
+
+    Date getRecieved();
+
+    void setRecieved(Date recieved);
+
+    Date getDone();
+
+    void setDone(Date done);
 }

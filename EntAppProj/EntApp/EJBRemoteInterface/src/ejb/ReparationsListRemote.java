@@ -17,4 +17,5 @@ import javax.ejb.Remote;
 public interface ReparationsListRemote {
     List<Reparations> getReparations();
     
+    void addReparations(Reparations reparations);
 }

@@ -22,10 +22,13 @@ import javax.ejb.EJB;
 public class Main {
     @EJB
     private static NewReparationsRemote newReparations;
+    
     @EJB
     private static ConsultationListRemote consultationList;
+    
     @EJB
     private static CustomerListRemote customerList;
+    
     @EJB
     private static TestSessionBeanRemote testSessionBean;
     
@@ -51,8 +54,20 @@ public class Main {
             System.out.println(it.getCustomerID().getName() + " " + it.getCustomerID().getLastName() + " HAVE CONSULTATION AT: " + it.getTime() + " : " + it.getDate());
         }
         
-        //Consultation consultation = consultationList.getConsultationByAccepted(false).get(0);
+        Consultation konsulat = consultationList.getConsultationByAccepted(false).get(1);
+        
+        
         
         //newReparations.add(consultation.getCustomerID(), 2, "images/resource", datee, datee);
+        //newReparations.setCustomerIDINT(konsulat.getCustomerID().getCustomerID());
+        
+        newReparations.setCustomerID(konsulat.getCustomerID());
+        
+        newReparations.setHoursWorked(4);
+        newReparations.setRecieved(datee);
+        newReparations.setDone(datee);
+        newReparations.setImagePath("resources/image/regeN.png");
+        newReparations.add();
+        //System.out.println("Regen bor: " + newReparations.getHoursWorked());
     }
 }

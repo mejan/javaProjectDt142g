@@ -27,7 +27,7 @@ public class ReparationsList implements ReparationsListRemote {
         return em.createNamedQuery("Customer.findAll", Reparations.class).getResultList();
     }
     
-    
+    @Override
     public void addReparations(Reparations reparations){
         em.persist(reparations);
         em.flush();
