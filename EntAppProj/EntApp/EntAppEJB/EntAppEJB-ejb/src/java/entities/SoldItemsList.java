@@ -5,37 +5,34 @@
  */
 package entities;
 
-import ejb.CustomerListRemote;
+import ejb.SoldItemsListRemote;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import entities.Customer;
 
 /**
  *
  * @author antondahlin
  */
 @Stateless
-public class CustomerList implements CustomerListRemote {
-
+public class SoldItemsList implements SoldItemsListRemote {
+    
     @PersistenceContext(unitName = "EntAppEJB-ejbPU")
     private EntityManager em;
     
     @Override
-    public List<Customer> getCustomers(){
-        return em.createNamedQuery("Customer.findAll", Customer.class).getResultList();
+    public List<SoldItems> getSoldItems(){
+        return em.createNamedQuery("SoldItems.findAll", SoldItems.class).getResultList();
     }
-    
     
     @Override
-    public String getTest() {
-        return "Testing remote access to entity";
+    public void addSoldItems(SoldItems soldItems){
+        em.persist(soldItems);
+        em.flush();
+        //em.clear();
     }
-    
-    
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
 }
