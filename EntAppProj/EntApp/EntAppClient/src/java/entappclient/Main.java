@@ -8,6 +8,7 @@ package entappclient;
 import ejb.ConsultationListRemote;
 import ejb.CustomerListRemote;
 import ejb.NewReparationsRemote;
+import ejb.NewSoldItemRemote;
 import ejb.TestSessionBeanRemote;
 import entities.Consultation;
 import entities.Customer;
@@ -20,6 +21,10 @@ import javax.ejb.EJB;
  * @author antondahlin
  */
 public class Main {
+    
+    @EJB
+    private static NewSoldItemRemote newSoldItem;
+    
     @EJB
     private static NewReparationsRemote newReparations;
     
@@ -31,6 +36,8 @@ public class Main {
     
     @EJB
     private static TestSessionBeanRemote testSessionBean;
+    
+    
     
 
     /**
@@ -69,5 +76,12 @@ public class Main {
         newReparations.setImagePath("resources/image/regeN.png");
         newReparations.add();
         //System.out.println("Regen bor: " + newReparations.getHoursWorked());
+        
+        
+        newSoldItem.setItemName("Strängar");
+        newSoldItem.setDateOfSale(datee);
+        newSoldItem.setPrice(100.50);
+        newSoldItem.add();
+        
     }
 }
