@@ -5,6 +5,7 @@
  */
 package session;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.RollbackException;
@@ -18,15 +19,23 @@ import se.miun.projectjava.entitys.Guitars;
 @Stateless
 public class NewGuitar {
     
-    GuitarList guitarList;
+    @EJB
+    private GuitarList guitarList;
+    
     private String name;
     private int price;
     private String description;
     private boolean sold;
-    final String defaultPath="guitars/";
-    private String filepath="+filename";//<--- behöver lösa denna del asap
+    private final String defaultPath="guitars/";
+    private String filepath;//<--- behöver lösa denna del asap
     
-    public void addNewGuitarToWebsite() throws RollbackException{
+    /**
+     *
+     * @throws RollbackException
+     * adds a guitar to the database with a default filepath + name of the file in the directory(supposed to)
+     * and with appropriate data
+     */
+    public void add() throws RollbackException{
         Guitars guitars = new Guitars();
         
         guitars.setName(name);
@@ -36,8 +45,7 @@ public class NewGuitar {
         guitars.setSold(sold);
         
         try{
-            if(guitarList.getGuitarsByName(name).isEmpty())
-                guitarList.addGuitar(guitars);
+            guitarList.addGuitar(guitars);
         }catch(RollbackException e){
             System.err.println("RollBackException: " + e.getMessage());
         }

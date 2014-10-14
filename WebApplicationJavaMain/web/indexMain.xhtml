@@ -54,6 +54,19 @@
             
             <h:commandButton action="#{newCustomerConsultation.add}" value="Lägg till användare" />
         </h:form>
+            <h:form >
+            Name:
+            <h:inputText value="#{newGuitar.name}" /><br />
+            Description:
+            <h:inputText value="#{newGuitar.description}" /><br />
+            Price:
+            <h:inputText value="#{newGuitar.price}" /><br />
+            filepath:
+            <h:inputText value="#{newGuitar.filepath}" /><br />
+            Sold or not
+            <h:inputText value="#{newGuitar.sold}"/><br/>
+            <h:commandButton action="#{newGuitar.add}" value="Add guitar" />
+        </h:form>
         <br />
         <br />
         <br />

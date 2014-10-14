@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="WebApplicationJavaMain" default="default" basedir=".">
-    <description>Builds, tests, and runs the project WebApplicationJavaMain.</description>
+<project name="WebApplicationJavaMainNy" default="default" basedir=".">
+    <description>Builds, tests, and runs the project WebApplicationJavaMainNy.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
