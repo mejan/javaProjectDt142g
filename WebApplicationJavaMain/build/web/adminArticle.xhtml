@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"   
+      xmlns:h="http://java.sun.com/jsf/html">
+    <body>
+        <ui:composition template="./admintemplate.xhtml">
+            <ui:define name="content">
+                <h3>Här kan du hantera nyhetsartiklar</h3>
+                <h5>Redigera befintliga artiklar:</h5>
+                    <div class = "row">
+                        <ui:repeat value="#{newsList.news}" var="item">
+                           <div class = "col-md-3">
+                               <div class="editArticle">
+                                    <h:inputText value="#{item.newsName}"/>
+                                    <br></br>
+                                    <h:graphicImage value="#{item.newsImage}"/>
+                                    <br></br>
+                                    <h:inputText value="Skriv in ny URL för bild"/>
+                                    <br></br>
+                                    <h:inputTextarea value="#{item.newsText}"/>
+                                    <h:commandButton action="#{newCustomerConsultation.add}" value="Redigera" />
+                                    <h:commandButton action="#{newCustomerConsultation.add}" value="Ta bort" />
+                                </div>
+                           </div>
+                        </ui:repeat>
+                    </div>
+                    <h5>Skapa en ny artikel:</h5>
+                    <div class = "row">
+                        <div class="newArticle">
+                            <h:form>
+                                <ul>
+                                    <li>
+                                        <label> Artikeltitel: </label>
+                                        <h:inputText value="#{newCustomerConsultation.name}" required="true"/>
+                                    </li>
+                                    <li>
+                                        <label> Ladda upp bild: </label>
+                                        <h:inputText value="#{newCustomerConsultation.phoneNumber}" required="true" />
+                                    </li>
+                                    <li>
+                                        <label> Nyhetstext: </label>
+                                        <h:inputTextarea value="#{newCustomerConsultation.lastName}" required="true" />
+                                    </li>
+                                    <h:commandButton action="#{newCustomerConsultation.add}" value="Lägg till" />
+                                </ul>
+                            </h:form>
+                        </div>
+                    </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

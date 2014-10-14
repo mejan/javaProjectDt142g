@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/admin.css"/>
+        <title>Admintemplate</title>
+    </h:head>
+
+    <h:body>
+
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <div id="wrapper">
+            <div id="top">
+                <div class="navbar navbar-default navbar-static-top">
+                    <div class ="container">
+                        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="collapse navbar-collapse navHeaderCollapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li> <a href="index.xhtml">Besök nuvarande webbplats </a></li>
+                                <li> <a href="adminArticle.xhtml">Redigera nyhetsartiklar </a></li>
+                                <li> <a href="adminContact.xhtml">Redigera kontaktuppgifter </a></li>
+                                <li> <a href="adminAbout.xhtml">Redigera företagsbeskrivning </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div class="container">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+            </div>
+            <div id="bottom">
+		<div class="container">
+                    <p class="text-muted pull-left">Created By Max och Henke design AB</p>
+                    <p class="text-muted pull-right">Copyright 2014</p>
+		</div>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,130 @@
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+li {
+    list-style-type: none;
+}
+#wrapper { 
+    min-height: 100%;
+    position: relative;
+}
+#logo{
+    margin-left: 30px;
+    position: absolute;
+    float:left;
+}
+#bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height:50px;
+  background-color: #f5f5f5;
+}
+.imageBanner {
+    width: 100%;
+}
+#content {
+    padding-bottom:100px;
+}
+.booking {
+    width: 500px;
+    margin: auto;
+}
+.booking ul {
+    list-style-type:none;
+    padding: 0px;
+}
+.booking li{
+    padding:5px; 
+}
+.booking label { 
+    width:150px;
+    display:inline-block;
+    float:left;
+}
+.booking input { 
+    height:25px; 
+    width:250px; 
+    padding:5px 8px;
+    padding-right:30px;
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+}
+.booking input:focus{ 
+    background: #fff; 
+    border:1px solid #555; 
+    box-shadow: 0 0 3px #aaa; 
+}
+.booking textarea {
+    width: 250px;
+    height:90px; 
+    resize: none;
+}
+#contact_inf{
+    float: right;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+#map{
+    float: left;
+    margin-top: 28px;
+    width: 800px; 
+    height: 400px; 
+    border: 5px solid lightgray;
+}
+#about {
+    text-align: center;
+    font-family: verdana;
+    margin-top: 10px;
+}
+#about_company{
+ margin: auto;
+ width: 60%;
+ font-size: 12px;
+}
+#about img{
+ padding: 0px;
+}
+#about_text{
+ font-size: 12px;
+}
+@media screen and (max-width:1200px){
+    #map {
+        width: 650px; 
+        height: 450px; 
+    }
+}
+@media screen and (max-width:992px){
+    #logo {
+        width: 350px; 
+    }
+    #map {
+        width: 100%;
+        height: 250px;
+    }
+    #contact_inf{
+        width:200px;
+        float:none;
+        margin:auto;
+    }
+}
+@media screen and (max-width:768px){
+    #logo {
+        width:45%;
+        min-height:40px;
+        margin-left: 0;
+    }
+    .booking {
+        width: 100%;
+    }
+    .booking input{
+        width: 100%;
+    }
+    .booking textarea{
+        width: 100%;
+    }
+}

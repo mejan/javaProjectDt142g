@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"   
+      xmlns:h="http://java.sun.com/jsf/html">
+    <body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">      
+                <div class="booking">
+                    <h:form>
+                        <ul>
+                            <li>
+                                <h1>Boka konsultation</h1>
+                            </li>
+                            <li>
+                                <label> Förnamn: </label>
+                                <h:inputText value="#{newCustomerConsultation.name}" required="true"/>
+                            </li>
+                            <li>
+                                <label> Efternamn: </label>
+                                <h:inputText value="#{newCustomerConsultation.lastName}" required="true" />
+                            </li>
+                            <li>
+                                <label> Telefonnummer: </label>
+                                <h:inputText value="#{newCustomerConsultation.phoneNumber}" required="true" />
+                            </li>
+                            <li>
+                                <label> E-mail: </label>
+                                <h:inputText value="#{newCustomerConsultation.email}" required="true" />
+                            </li>
+                            <li>
+                                <label> Kort beskrivning av ärendet: </label>
+                                <h:inputTextarea value="#{newCustomerConsultation.description}" required="true" />
+                            </li>
+                            <h:commandButton action="#{newCustomerConsultation.add}" value="Boka" />
+                            <h:commandButton  id="reset" value="Reset" type="reset" />
+                        </ul>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
