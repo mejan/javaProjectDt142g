@@ -15,7 +15,7 @@ public class VATCounter extends javax.swing.JPanel {
      */
     public VATCounter() {
         initComponents();
-        addSold = new InputContainerVetCounter();
+        addSold = new InputContainerVATCounter();
     }
 
     /**
@@ -107,11 +107,12 @@ public class VATCounter extends javax.swing.JPanel {
     private void addSoldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSoldButtonActionPerformed
         // TODO add your handling code here:
         addSold.setProduct(prodTextField.getText());
-        addSold.setDate(dateTextField.getText());
+        addSold.setDateOfSale(dateTextField.getText());
         addSold.setPrice(Double.parseDouble(priceTextField.getText()));
+        addSold.add();
     }//GEN-LAST:event_addSoldButtonActionPerformed
 
-    private InputContainerVetCounter addSold;
+    private InputContainerVATCounter addSold;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSoldButton;
     private javax.swing.JLabel dateLabel;
