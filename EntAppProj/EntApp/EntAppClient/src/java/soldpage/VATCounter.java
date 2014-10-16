@@ -15,7 +15,7 @@ public class VATCounter extends javax.swing.JPanel {
      */
     public VATCounter() {
         initComponents();
-        addSold = new InputContainerVATCounter();
+        addSold = new ContainerVATCounter();
     }
 
     /**
@@ -40,13 +40,30 @@ public class VATCounter extends javax.swing.JPanel {
 
         prodLabel.setText("Produkt:");
 
+        prodTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                prodTextFieldFocusLost(evt);
+            }
+        });
+
         priceLabel.setText("Pris:");
 
         priceUnitLabel.setText("Kr");
 
+        priceTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                priceTextFieldFocusLost(evt);
+            }
+        });
+
         dateLabel.setText("Datum den såldes:");
 
         dateTextField.setText("yyyy-mm-dd");
+        dateTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dateTextFieldFocusLost(evt);
+            }
+        });
 
         addSoldButton.setText("Lägg till");
         addSoldButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,13 +123,56 @@ public class VATCounter extends javax.swing.JPanel {
 
     private void addSoldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSoldButtonActionPerformed
         // TODO add your handling code here:
-        addSold.setProduct(prodTextField.getText());
+                
+        /*addSold.setProduct(prodTextField.getText());
         addSold.setDateOfSale(dateTextField.getText());
-        addSold.setPrice(Double.parseDouble(priceTextField.getText()));
-        addSold.add();
+        addSold.setPrice(Double.parseDouble(priceTextField.getText()));*/
+        if(addSold.allFilled()){
+            System.out.println("jepp");
+            //addSold.add();
+            addSold.resetFilled();
+            resetVATCounter();
+        } else{
+            System.out.println("förväntat?");
+        }
     }//GEN-LAST:event_addSoldButtonActionPerformed
 
-    private InputContainerVATCounter addSold;
+    private void prodTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prodTextFieldFocusLost
+        // TODO add your handling code here
+        if(!prodTextField.equals("") && !prodTextField.equals("You need to fill this Field!")){
+            addSold.setProduct(prodTextField.getText());
+        }else{
+            prodTextField.setText("Du behöver fylla in namn");
+        }
+    }//GEN-LAST:event_prodTextFieldFocusLost
+
+    private void priceTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_priceTextFieldFocusLost
+        // TODO add your handling code here:
+        if(!priceTextField.equals("") && !priceTextField.equals("Du kan bara skriva ett flytttal")){
+            try{
+                double d = Double.parseDouble(priceTextField.getText());
+                addSold.setPrice(d);
+            } catch(NumberFormatException nfe){
+                priceTextField.setText("Du kan bara skriva ett flytttal");
+            }
+        }
+    }//GEN-LAST:event_priceTextFieldFocusLost
+
+    private void dateTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dateTextFieldFocusLost
+        // TODO add your handling code here:
+        if(!dateTextField.equals("Ogilltigt datum format.") && !dateTextField.equals("") && addSold.setDate(dateTextField.getText())){
+            System.out.println("Date is set");
+        }else{
+            dateTextField.setText("yyyy-mm-dd");
+        }
+    }//GEN-LAST:event_dateTextFieldFocusLost
+
+    private void resetVATCounter(){
+        priceTextField.setText("");
+        prodTextField.setText("");
+        dateTextField.setText("yyyy-mm-dd");
+   }
+    private ContainerVATCounter addSold;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSoldButton;
     private javax.swing.JLabel dateLabel;
