@@ -30,6 +30,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="dateErrorLabel" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="fromDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -41,20 +42,28 @@
                           <Component id="toDateTextField" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="gotPaidLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="vetProcsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vatIsProcsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="gotPaidTextField" max="32767" attributes="0"/>
-                          <Component id="vetProcsTextField" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="valueUnitLabelTwo" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="valueUnitLabelOne" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="getButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="gotPaidTextField" max="32767" attributes="0"/>
+                                  <Component id="vatIsTextField" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="valueUnitLabelTwo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valueUnitLabelOne" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -75,17 +84,21 @@
                   <Component id="fromDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="toDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="dateErrorLabel" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="getButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="gotPaidLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="gotPaidTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="valueUnitLabelOne" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="vetProcsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vatIsProcsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="valueUnitLabelTwo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="vetProcsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vatIsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
           </Group>
@@ -107,11 +120,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fromDateTextFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="toDateTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="toDateTextFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="gotPaidLabel">
       <Properties>
@@ -125,7 +144,7 @@
         <Property name="text" type="java.lang.String" value="kr"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="vetProcsLabel">
+    <Component class="javax.swing.JLabel" name="vatIsProcsLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="varav moms:"/>
       </Properties>
@@ -135,7 +154,22 @@
         <Property name="text" type="java.lang.String" value="kr"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="vetProcsTextField">
+    <Component class="javax.swing.JTextField" name="vatIsTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="getButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#xe4;mta"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateErrorLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6" green="6" red="a7" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

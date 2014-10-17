@@ -7,7 +7,6 @@ package soldpage;
 
 
 import ejb.NewSoldItemRemote;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -104,7 +103,6 @@ public class ContainerVATCounter {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try{
             dateOfSale = formatter.parse(tmpDate);
-            System.out.println(dateOfSale.toString());
         } catch(ParseException e){
             e.printStackTrace();
         }

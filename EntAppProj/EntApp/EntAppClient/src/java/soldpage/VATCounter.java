@@ -4,6 +4,10 @@
  */
 package soldpage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mejan
@@ -127,43 +131,58 @@ public class VATCounter extends javax.swing.JPanel {
         /*addSold.setProduct(prodTextField.getText());
         addSold.setDateOfSale(dateTextField.getText());
         addSold.setPrice(Double.parseDouble(priceTextField.getText()));*/
-        if(addSold.allFilled()){
-            System.out.println("jepp");
-            //addSold.add();
-            addSold.resetFilled();
-            resetVATCounter();
-        } else{
-            System.out.println("förväntat?");
-        }
+        
+            if(addSold.allFilled()){
+                if(surePopup(addSold.getDateOfSale(),addSold.getProduct(), addSold.getPrice())){
+                    System.out.println("jepp");
+                    //addSold.add();
+                    addSold.resetFilled();
+                    resetVATCounter();
+                }
+            }
     }//GEN-LAST:event_addSoldButtonActionPerformed
 
     private void prodTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prodTextFieldFocusLost
         // TODO add your handling code here
-        if(!prodTextField.equals("") && !prodTextField.equals("You need to fill this Field!")){
-            addSold.setProduct(prodTextField.getText());
+        String empty = "Du måste fylla i ett produktnamn.";
+        
+        if((prodTextField.getText().length() != 0) && !prodTextField.equals(empty)){
+                addSold.setProduct(prodTextField.getText());
         }else{
-            prodTextField.setText("Du behöver fylla in namn");
+            prodTextField.setText(empty);
         }
     }//GEN-LAST:event_prodTextFieldFocusLost
 
     private void priceTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_priceTextFieldFocusLost
         // TODO add your handling code here:
-        if(!priceTextField.equals("") && !priceTextField.equals("Du kan bara skriva ett flytttal")){
+        String format = "Du kan bara skriva ett flyttta.";
+        String empty = "Du måste skriva in ett pris.";
+        
+        if((priceTextField.getText().length() != 0) && !priceTextField.equals(empty)){
             try{
                 double d = Double.parseDouble(priceTextField.getText());
                 addSold.setPrice(d);
             } catch(NumberFormatException nfe){
-                priceTextField.setText("Du kan bara skriva ett flytttal");
+                priceTextField.setText(format);
             }
+        } else{
+            priceTextField.setText(empty);
         }
     }//GEN-LAST:event_priceTextFieldFocusLost
 
     private void dateTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dateTextFieldFocusLost
         // TODO add your handling code here:
-        if(!dateTextField.equals("Ogilltigt datum format.") && !dateTextField.equals("") && addSold.setDate(dateTextField.getText())){
-            System.out.println("Date is set");
-        }else{
-            dateTextField.setText("yyyy-mm-dd");
+        String format = "yyyy-mm-dd";
+        String empty = "Du måste fylla i ett datum.";
+        
+        if((dateTextField.getText().length() != 0) && !dateTextField.equals(empty)){
+            if(!dateTextField.equals(format) && addSold.setDate(dateTextField.getText())){
+                System.out.println("Date is set");
+            }else{
+                dateTextField.setText(format);
+            }
+        } else{
+            dateTextField.setText(empty);
         }
     }//GEN-LAST:event_dateTextFieldFocusLost
 
@@ -172,7 +191,21 @@ public class VATCounter extends javax.swing.JPanel {
         prodTextField.setText("");
         dateTextField.setText("yyyy-mm-dd");
    }
-    private ContainerVATCounter addSold;
+    
+    private boolean surePopup(Date da, String pro, double price){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        int tmp =  JOptionPane.showConfirmDialog(null,
+            "Är du säker på att du vill lägga till "+ pro + " för " + Double.toString(price) + " kr som var sålt " + formatter.format(da) + "."
+            , "Please select",
+            JOptionPane.YES_NO_OPTION);
+        System.out.println(tmp);
+        if(tmp == 0)
+            return true;
+        else
+            return false;
+    }
+    
+    private final ContainerVATCounter addSold;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSoldButton;
     private javax.swing.JLabel dateLabel;
