@@ -18,4 +18,7 @@ public interface ConsultationListRemote {
  
     List<Consultation> getConsultationByAccepted(boolean accepted);
     
+    void removeConsultation(Consultation consultation);
+    
+    void updateConsultation(Consultation consultations);
 }

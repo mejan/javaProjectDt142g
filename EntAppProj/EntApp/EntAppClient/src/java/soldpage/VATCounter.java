@@ -135,7 +135,7 @@ public class VATCounter extends javax.swing.JPanel {
             if(addSold.allFilled()){
                 if(surePopup(addSold.getDateOfSale(),addSold.getProduct(), addSold.getPrice())){
                     System.out.println("jepp");
-                    //addSold.add();
+                    addSold.add();
                     addSold.resetFilled();
                     resetVATCounter();
                 }

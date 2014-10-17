@@ -30,6 +30,7 @@ public class SoldItemsList implements SoldItemsListRemote {
     public void addSoldItems(SoldItems soldItems){
         em.persist(soldItems);
         em.flush();
+        //em.merge(soldItems);
         //em.clear();
     }
 

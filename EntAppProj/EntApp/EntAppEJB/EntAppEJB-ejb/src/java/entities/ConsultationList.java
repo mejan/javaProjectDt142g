@@ -25,6 +25,21 @@ public class ConsultationList implements ConsultationListRemote {
         return em.createNamedQuery("Consultation.findByAccepted", Consultation.class).setParameter("accepted", accepted).getResultList();
     }
     
+    @Override
+    public void removeConsultation(Consultation consultation){
+        consultation = em.merge(consultation);
+        em.remove(consultation);
+    }
+    
+    @Override
+    public void updateConsultation(Consultation consultation){
+      
+        em.merge(consultation);
+      
+    }
+    
+    private String desc;
+    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }

@@ -5,7 +5,7 @@
  */
 package ejb;
 
-import entities.Reparations;
+import entities.Guitars;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -14,10 +14,8 @@ import javax.ejb.Remote;
  * @author antondahlin
  */
 @Remote
-public interface ReparationsListRemote {
-    List<Reparations> getReparations();
-    
-    void addReparations(Reparations reparations);
-    
-    void updateReparations(Reparations reparations);
+public interface GuitarsListRemote {
+    List<Guitars> getGuitars();
+   
+    void updateGuitar(Guitars guitar);
 }

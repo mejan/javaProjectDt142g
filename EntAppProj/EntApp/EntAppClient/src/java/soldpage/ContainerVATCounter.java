@@ -125,6 +125,7 @@ public class ContainerVATCounter {
     private String product;
     private double price;
     private Date dateOfSale;
+    
 
     private NewSoldItemRemote lookupNewSoldItemRemote() {
         try {
@@ -135,4 +136,5 @@ public class ContainerVATCounter {
             throw new RuntimeException(ne);
         }
     }
+
 }

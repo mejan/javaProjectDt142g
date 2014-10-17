@@ -25,6 +25,8 @@ public class NewSoldItem implements NewSoldItemRemote {
     private Date dateOfSale;
     private double price;
     
+
+    
     @Override
     public void add() throws RollbackException {
     
