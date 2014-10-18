@@ -123,7 +123,7 @@ public class ContainerVATCounterReader {
         return tmpDate;
     }
     
-    private void readPriceFromDB(){
+    /*private void readPriceFromDB(){
         SoldItemsListRemote list = lookupSoldItemsListRemote();
         System.out.println("Innan Penis");
         List<SoldItems> penis = list.getSoldItemsByInterval(getFromDate(), getToDate());
@@ -132,6 +132,12 @@ public class ContainerVATCounterReader {
         for(SoldItems it: penis){
             totalSold = totalSold + it.getPrice();
         }
+    }*/
+    private void readPriceFromDB(){
+        SoldItemsListRemote list = lookupSoldItemsListRemote();
+        System.out.println("Innan Penis");
+        //List<SoldItems> penis = list.getSoldItemsByInterval(getFromDate(), getToDate());
+        List<SoldItems> penis2 = list.getSoldItems();
     }
     
     //members
@@ -152,5 +158,6 @@ public class ContainerVATCounterReader {
             throw new RuntimeException(ne);
         }
     }
+    
     
 }

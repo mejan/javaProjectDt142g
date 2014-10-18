@@ -9,9 +9,11 @@ import ejb.ConsultationListRemote;
 import ejb.CustomerListRemote;
 import ejb.NewReparationsRemote;
 import ejb.NewSoldItemRemote;
+import ejb.SoldItemsListRemote;
 import ejb.TestSessionBeanRemote;
 import entities.Consultation;
 import entities.Customer;
+import entities.SoldItems;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -21,6 +23,8 @@ import javax.ejb.EJB;
  * @author antondahlin
  */
 public class Main {
+    @EJB
+    private static SoldItemsListRemote soldItemsList;
     
     @EJB
     private static NewSoldItemRemote newSoldItem;
@@ -45,7 +49,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Resultatet är: " + testSessionBean.getResult());
+        List<SoldItems> kuk = soldItemsList.getSoldItems();
+        /*System.out.println("Resultatet är: " + testSessionBean.getResult());
         System.out.println("Resultatet är: " + customerList.getTest());
         
         List<Customer> customerlist = customerList.getCustomers();
@@ -81,7 +86,7 @@ public class Main {
         newSoldItem.setItemName("Strängar");
         newSoldItem.setDateOfSale(datee);
         newSoldItem.setPrice(100.50);
-        newSoldItem.add();
+        newSoldItem.add();*/
         
     }
 }

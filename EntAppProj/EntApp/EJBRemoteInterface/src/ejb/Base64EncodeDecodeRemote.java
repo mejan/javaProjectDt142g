@@ -5,9 +5,8 @@
  */
 package ejb;
 
-import entities.Guitars;
 import java.awt.image.BufferedImage;
-import java.util.List;
+import java.io.Serializable;
 import javax.ejb.Remote;
 
 /**
@@ -15,10 +14,8 @@ import javax.ejb.Remote;
  * @author antondahlin
  */
 @Remote
-public interface GuitarsListRemote {
-    List<Guitars> getGuitars();
-   
-    void updateGuitar(Guitars guitar);
+public interface Base64EncodeDecodeRemote {
+    BufferedImage decodeToImage(String imageString);
     
-
+    String encodeToString(BufferedImage image, String type);
 }
