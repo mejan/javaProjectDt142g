@@ -151,10 +151,9 @@ public class VATCounterReader extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(getPaid.allFilled()){
             if(getPaid.correctOrderOfDate()){
-                System.out.println("Funkar!");
-                getPaid.resetFilled();
                 gotPaidTextField.setText(String.valueOf(getPaid.getTotalSold()));
                 vatIsTextField.setText(String.valueOf(getPaid.getVATTotal()));
+                getPaid.resetFilled();
             }else{
                 dateErrorLabel.setText("Ogiltig kombination av datum.");
             }

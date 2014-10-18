@@ -5,9 +5,17 @@
  */
 package soldpage;
 
+import ejb.SoldItemsListRemote;
+import entities.SoldItems;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
@@ -16,9 +24,15 @@ import java.util.Date;
 public class ContainerVATCounterReader {
 
     public ContainerVATCounterReader(){
-        totalSold = 200000;
+        totalSold = 0;
         fromDateFilled = false;
         toDateFilled = false;
+    }
+    
+    public ContainerVATCounterReader(String fdate, String tdate){
+        totalSold = 0;
+        setFromDate(fdate);
+        setToDate(tdate);
     }
     
     public boolean setToDate(String date){
@@ -48,11 +62,19 @@ public class ContainerVATCounterReader {
     }
     
     public double getTotalSold(){
-        return totalSold;
+        if(allFilled()){
+            readPriceFromDB();
+            return totalSold;
+        }
+        return 0;
     }
     
     public double getVATTotal(){
-        return totalSold*calcVAT;
+        if(allFilled()){
+            readPriceFromDB();
+            return totalSold*calcVAT;
+        }
+        return 0;
     }
     
     public boolean allFilled(){
@@ -95,11 +117,21 @@ public class ContainerVATCounterReader {
         Date tmpDate = new Date();
         try{
             tmpDate = formatter.parse(tmpStr);
-            System.out.println(tmpDate.toString());
         } catch(ParseException e){
             e.printStackTrace();
         }
         return tmpDate;
+    }
+    
+    private void readPriceFromDB(){
+        SoldItemsListRemote list = lookupSoldItemsListRemote();
+        System.out.println("Innan Penis");
+        List<SoldItems> penis = list.getSoldItemsByInterval(getFromDate(), getToDate());
+        System.out.println("Efter Penis");
+        totalSold = 0;
+        for(SoldItems it: penis){
+            totalSold = totalSold + it.getPrice();
+        }
     }
     
     //members
@@ -109,5 +141,16 @@ public class ContainerVATCounterReader {
     private boolean toDateFilled;
     private double totalSold;
     //const to calc VAT
-    private final double calcVAT = 0.25;
+    private final double calcVAT = 0.2; //för att få ut rätt värde.
+
+    private SoldItemsListRemote lookupSoldItemsListRemote() {
+        try {
+            Context c = new InitialContext();
+            return (SoldItemsListRemote) c.lookup("java:comp/env/SoldItemsList");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+    
 }

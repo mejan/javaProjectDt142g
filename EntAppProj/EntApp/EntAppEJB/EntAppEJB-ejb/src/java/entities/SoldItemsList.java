@@ -6,6 +6,7 @@
 package entities;
 
 import ejb.SoldItemsListRemote;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,6 +25,10 @@ public class SoldItemsList implements SoldItemsListRemote {
     @Override
     public List<SoldItems> getSoldItems(){
         return em.createNamedQuery("SoldItems.findAll", SoldItems.class).getResultList();
+    }
+    
+    @Override public List<SoldItems> getSoldItemsByInterval(Date dateLower, Date dateUpper){ 
+        return em.createNamedQuery("SoldItems.findByDateInterval", SoldItems.class).setParameter("dateLower", dateLower).setParameter("dateUpper", dateUpper).getResultList();
     }
     
     @Override

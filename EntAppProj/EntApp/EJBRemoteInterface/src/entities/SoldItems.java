@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SoldItems.findBySoldID", query = "SELECT s FROM SoldItems s WHERE s.soldID = :soldID"),
     @NamedQuery(name = "SoldItems.findByItemName", query = "SELECT s FROM SoldItems s WHERE s.itemName = :itemName"),
     @NamedQuery(name = "SoldItems.findByDateOfSale", query = "SELECT s FROM SoldItems s WHERE s.dateOfSale = :dateOfSale"),
+    @NamedQuery(name = "SoldItems.findByDateInterval", query = "SELECT s FROM SoldItems s WHERE s.dateOfSale BETWEEN :dateLower AND :dateUpper"),
     @NamedQuery(name = "SoldItems.findByPrice", query = "SELECT s FROM SoldItems s WHERE s.price = :price")})
 public class SoldItems implements Serializable {
     private static final long serialVersionUID = 1L;

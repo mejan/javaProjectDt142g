@@ -6,6 +6,7 @@
 package ejb;
 
 import entities.SoldItems;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -19,4 +20,6 @@ public interface SoldItemsListRemote {
     List<SoldItems> getSoldItems();
     
     void addSoldItems(SoldItems soldItems);
+    
+    List<SoldItems> getSoldItemsByInterval(Date dateLower, Date dateUpper);
 }
