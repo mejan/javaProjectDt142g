@@ -134,7 +134,6 @@ public class VATCounter extends javax.swing.JPanel {
         
             if(addSold.allFilled()){
                 if(surePopup(addSold.getDateOfSale(),addSold.getProduct(), addSold.getPrice())){
-                    System.out.println("jepp");
                     addSold.add();
                     addSold.resetFilled();
                     resetVATCounter();
@@ -198,7 +197,6 @@ public class VATCounter extends javax.swing.JPanel {
             "Är du säker på att du vill lägga till "+ pro + " för " + Double.toString(price) + " kr som var sålt " + formatter.format(da) + "."
             , "Please select",
             JOptionPane.YES_NO_OPTION);
-        System.out.println(tmp);
         if(tmp == 0)
             return true;
         else
