@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-client version="6" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application-client_6.xsd">
+  <display-name>EntAppClient</display-name>
+  <ejb-ref>
+    <ejb-ref-name>NewSoldItem</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.NewSoldItemRemote</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ReparationsList</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.ReparationsListRemote</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ConsultationList</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.ConsultationListRemote</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>SoldItemsList</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.SoldItemsListRemote</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>GuitarsList</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.GuitarsListRemote</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>NewGuitars</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.NewGuitarsRemote</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>NewReparations</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>ejb.NewReparationsRemote</remote>
+  </ejb-ref>
+</application-client>

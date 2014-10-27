@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,16 +28,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
+    @NamedQuery(name = "Company.findById", query = "SELECT c FROM Company c WHERE c.id = :id"),
     @NamedQuery(name = "Company.findByName", query = "SELECT c FROM Company c WHERE c.name = :name"),
     @NamedQuery(name = "Company.findByCity", query = "SELECT c FROM Company c WHERE c.city = :city"),
-    @NamedQuery(name = "Company.findByStreet", query = "SELECT c FROM Company c WHERE c.street = :street"),
+    @NamedQuery(name = "Company.findByAddress", query = "SELECT c FROM Company c WHERE c.address = :address"),
     @NamedQuery(name = "Company.findByAreaCode", query = "SELECT c FROM Company c WHERE c.areaCode = :areaCode"),
     @NamedQuery(name = "Company.findByPhone", query = "SELECT c FROM Company c WHERE c.phone = :phone"),
-    @NamedQuery(name = "Company.findByEmail", query = "SELECT c FROM Company c WHERE c.email = :email")
-})
+    @NamedQuery(name = "Company.findByEmail", query = "SELECT c FROM Company c WHERE c.email = :email")})
 public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 250)
@@ -49,16 +55,19 @@ public class Company implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 250)
-    @Column(name = "street")
-    private String street;
+    @Column(name = "address")
+    private String address;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 250)
     @Column(name = "areaCode")
-    private int areaCode;
+    private String areaCode;
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 250)
     @Column(name = "phone")
-    private int phone;
+    private String phone;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
@@ -69,17 +78,26 @@ public class Company implements Serializable {
     public Company() {
     }
 
-    public Company(String name) {
-        this.name = name;
+    public Company(Integer id) {
+        this.id = id;
     }
 
-    public Company(String name, String city, String street, int areaCode, int phone, String email) {
+    public Company(Integer id, String name, String city, String address, String areaCode, String phone, String email) {
+        this.id = id;
         this.name = name;
         this.city = city;
-        this.street = street;
+        this.address = address;
         this.areaCode = areaCode;
         this.phone = phone;
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -98,27 +116,27 @@ public class Company implements Serializable {
         this.city = city;
     }
 
-    public String getStreet() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getAreaCode() {
+    public String getAreaCode() {
         return areaCode;
     }
 
-    public void setAreaCode(int areaCode) {
+    public void setAreaCode(String areaCode) {
         this.areaCode = areaCode;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -133,7 +151,7 @@ public class Company implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (name != null ? name.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -144,7 +162,7 @@ public class Company implements Serializable {
             return false;
         }
         Company other = (Company) object;
-        if ((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -152,7 +170,7 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return "se.miun.projectjava.entitys.Company[ name=" + name + " ]";
+        return "se.miun.projectjava.entitys.Company[ id=" + id + " ]";
     }
     
 }

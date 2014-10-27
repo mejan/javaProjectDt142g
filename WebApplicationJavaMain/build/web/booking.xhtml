@@ -1,42 +1,72 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"   
-      xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <body>
         <ui:composition template="./template.xhtml">
-            <ui:define name="content">      
-                <div class="booking">
-                    <h:form>
-                        <ul>
-                            <li>
-                                <h1>Boka konsultation</h1>
-                            </li>
-                            <li>
-                                <label> Förnamn: </label>
-                                <h:inputText value="#{newCustomerConsultation.name}" required="true"/>
-                            </li>
-                            <li>
-                                <label> Efternamn: </label>
-                                <h:inputText value="#{newCustomerConsultation.lastName}" required="true" />
-                            </li>
-                            <li>
-                                <label> Telefonnummer: </label>
-                                <h:inputText value="#{newCustomerConsultation.phoneNumber}" required="true" />
-                            </li>
-                            <li>
-                                <label> E-mail: </label>
-                                <h:inputText value="#{newCustomerConsultation.email}" required="true" />
-                            </li>
-                            <li>
-                                <label> Kort beskrivning av ärendet: </label>
-                                <h:inputTextarea value="#{newCustomerConsultation.description}" required="true" />
-                            </li>
-                            <h:commandButton action="#{newCustomerConsultation.add}" value="Boka" />
-                            <h:commandButton  id="reset" value="Reset" type="reset" />
-                        </ul>
-                    </h:form>
-                </div>
+            <ui:define name="content">
+                <h:form id="booking">
+                    <h:message for="booking" style="color: green; size: 16px; font-weight: bold;"/>
+                    <br></br>
+                    <div class = "col-md-6">
+                        <div class="form-group">
+                            <label>Välj en dag</label><br></br>
+                            <h:selectOneMenu id="day" value="#{newCustomerConsultation.setDay}" styleClass="selectOne">
+                                <f:selectItem itemLabel="Välj en dag i listan"/>
+                                <f:selectItem itemValue="Måndag" itemLabel="Måndag"/>
+                                <f:selectItem itemValue="Tisdag" itemLabel="Tisdag"/>
+                                <f:selectItem itemValue="Ondsag" itemLabel="Onsdag"/>
+                                <f:selectItem itemValue="Torsdag" itemLabel="Torsdag"/>
+                                <f:selectItem itemValue="Fredag" itemLabel="Fredag"/>
+                            
+                            </h:selectOneMenu>
+                            
+                        </div>
+                    </div>
+                    <div class = "col-md-6">
+                        <div class="form-group">
+                            <label>Välj ett tidsintervall som passar dig</label><br></br>
+                            <h:selectOneMenu id="tid" value="#{newCustomerConsultation.setTime}" styleClass="selectOne">
+                                <f:selectItem itemLabel="Välj en tid i listan"/>
+                                <f:selectItem itemValue="08:00-10:00" itemLabel="08:00-10:00"/>
+                                <f:selectItem itemValue="10:00-12:00" itemLabel="10:00-12:00"/>
+                                <f:selectItem itemValue="13:00-15:00" itemLabel="13:00-15:00"/>
+                                <f:selectItem itemValue="15:00-17:00" itemLabel="15:00-17:00"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <h:message for="day" style="color:red;"/> 
+                    <div class="form-group">
+                        <label>Förnamn</label>
+                        <h:inputText id="firstName" class="form-control" value="#{newCustomerConsultation.name}" required="true" requiredMessage="Skriv in ditt förnamn"/>
+                        <h:message for="firstName" style="color: red;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Efternamn</label>
+                        <h:inputText id="lastName" class="form-control" value="#{newCustomerConsultation.lastName}" required="true" requiredMessage="Skriv in ditt efternamn"/>
+                        <h:message for="lastName" style="color: red;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Telefonnummer</label>
+                        <h:inputText id="phone" class="form-control" value="#{newCustomerConsultation.phoneNumber}" required="true" requiredMessage="Skriv in ditt telefonnummer" validatorMessage="Skriv in nummer, ex 0701123456"><f:validateLongRange minimum="1" maximum="1000000000" /></h:inputText>
+                        <h:message for="phone" style="color: red;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email-adress</label>
+                        <h:inputText id="email" class="form-control" value="#{newCustomerConsultation.email}" required="true" requiredMessage="Skriv in email" validatorMessage="Felaktigt format, ex. first.last@test.com"><f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /></h:inputText>
+                        <h:message for="email" style="color: red;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Kort beskrivning av ärendet</label>
+                        <h:inputTextarea id="describe" class="form-control" value="#{newCustomerConsultation.description}" required="true" requiredMessage="Beskriv ditt ärende" />
+                        <h:message for="describe" style="color: red;" />
+                    </div>
+                    <h:commandButton action="#{newCustomerConsultation.add}" value="Boka" class="btn btn-success" />
+                    <h:commandButton id="success" type="reset" value="Rensa" class="btn btn-warning"/><br></br>
+                    
+                </h:form>
             </ui:define>
         </ui:composition>
     </body>

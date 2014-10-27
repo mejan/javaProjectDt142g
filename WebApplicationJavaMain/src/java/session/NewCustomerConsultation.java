@@ -7,8 +7,9 @@ package session;
 
 import java.util.Date;
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.RollbackException;
 import javax.persistence.Temporal;
@@ -26,7 +27,6 @@ public class NewCustomerConsultation {
     //Customer variables
     @EJB
     private CustomerList customerList;
-    
     //private int cuID;
     private String name;
     private String lastName;
@@ -43,8 +43,47 @@ public class NewCustomerConsultation {
     private Date date;
     private String description;
     private boolean accepted;
+    private String setDay;
+    private String setTime;
     
-    public void add() throws RollbackException{
+    public void clear(){
+        name="";
+        lastName="";
+        email="";
+        phoneNumber="";
+        
+        description="";
+        setDay="";
+        setTime="";
+    }
+
+    public String getSetDay() {
+        return setDay;
+    }
+
+    public void setSetDay(String setDay) {
+        this.setDay = setDay;
+    }
+
+    public String getSetTime() {
+        return setTime;
+    }
+
+    public void setSetTime(String setTime) {
+        this.setTime = setTime;
+    }
+    public void TestMessage(){
+        String errorMessage = "Bokningen lyckades!\n Anton kontaktar dig via e-post inom kort.";
+        FacesMessage facesMessage = new FacesMessage(errorMessage);
+        FacesContext.getCurrentInstance().addMessage("booking",  facesMessage);
+    }
+    public void handleException(Exception e){
+                        
+        String errorMessage = "Välj dag och tid";
+        FacesMessage facesMessage = new FacesMessage(errorMessage);
+        FacesContext.getCurrentInstance().addMessage("booking:day",  facesMessage);
+    }
+    public void add() throws Exception{
         
         Customer customer = new Customer();
         Consultation consultation = new Consultation();
@@ -60,16 +99,23 @@ public class NewCustomerConsultation {
         consultation.setTime(datee);
         consultation.setDescription(description);
         consultation.setAccepted(false);
+        consultation.setDay(setDay);
+        consultation.setTimeInterval(setTime);
         
       try{  
             if(customerList.getCustomersByEmail(email).isEmpty())
                 customerList.addCustomer(customer);
+            
+            
             else
                 consultation.setCustomerID(customerList.getCustomersByEmail(email).get(0));
 
             consultationList.addConsultation(consultation);
-      }catch(RollbackException e){
-         System.err.println("RollBackException: " + e.getMessage());
+            clear();
+            TestMessage();
+      }catch(Exception e){
+          handleException(e);
+          
       }
     }
     
@@ -113,13 +159,6 @@ public class NewCustomerConsultation {
         return accepted;
     }
     
-    
-    
-    
-    
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
     public void setCustomerList(CustomerList customerList) {
         this.customerList = customerList;
     }

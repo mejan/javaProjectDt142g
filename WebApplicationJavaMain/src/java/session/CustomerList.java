@@ -38,10 +38,8 @@ public class CustomerList {
     public List<Customer> getCustomersByEmail(String email){
         return em.createNamedQuery("Customer.findByEmail", Customer.class).setParameter("email", email).getResultList();
     }
-    public String getCustomersByLastName(String name){
-        String result= em.createNamedQuery("Customer.findByLastName",Customer.class).setParameter("lname", name).getSingleResult().getName();
-        return result;
-    }
+    
+    
     public void addCustomer(Customer customer){
         em.persist(customer);
         em.flush();

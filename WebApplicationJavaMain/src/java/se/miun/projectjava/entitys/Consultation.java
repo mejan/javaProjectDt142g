@@ -8,7 +8,6 @@ package se.miun.projectjava.entitys;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author antondahlin
+ * @author Max
  */
 @Entity
 @Table(name = "Consultation")
@@ -38,13 +37,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Consultation.findByDate", query = "SELECT c FROM Consultation c WHERE c.date = :date"),
     @NamedQuery(name = "Consultation.findByTime", query = "SELECT c FROM Consultation c WHERE c.time = :time"),
     @NamedQuery(name = "Consultation.findByDescription", query = "SELECT c FROM Consultation c WHERE c.description = :description"),
-    @NamedQuery(name = "Consultation.findByAccepted", query = "SELECT c FROM Consultation c WHERE c.accepted = :accepted")})
+    @NamedQuery(name = "Consultation.findByAccepted", query = "SELECT c FROM Consultation c WHERE c.accepted = :accepted"),
+    @NamedQuery(name = "Consultation.findByDay", query = "SELECT c FROM Consultation c WHERE c.day = :day"),
+    @NamedQuery(name = "Consultation.findByTimeInterval", query = "SELECT c FROM Consultation c WHERE c.timeInterval = :timeInterval")})
 public class Consultation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    //@NotNull
     @Column(name = "consultationID")
     private Integer consultationID;
     @Basic(optional = false)
@@ -53,7 +53,7 @@ public class Consultation implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     @Basic(optional = false)
-    //@NotNull
+    @NotNull
     @Column(name = "time")
     @Temporal(TemporalType.TIME)
     private Date time;
@@ -66,8 +66,18 @@ public class Consultation implements Serializable {
     @NotNull
     @Column(name = "accepted")
     private boolean accepted;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "day")
+    private String day;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "timeInterval")
+    private String timeInterval;
     @JoinColumn(name = "customerID", referencedColumnName = "customerID")
-    @ManyToOne(optional = false)//, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = false)
     private Customer customerID;
 
     public Consultation() {
@@ -77,12 +87,14 @@ public class Consultation implements Serializable {
         this.consultationID = consultationID;
     }
 
-    public Consultation(Integer consultationID, Date date, Date time, String description, boolean accepted) {
+    public Consultation(Integer consultationID, Date date, Date time, String description, boolean accepted, String day, String timeInterval) {
         this.consultationID = consultationID;
         this.date = date;
         this.time = time;
         this.description = description;
         this.accepted = accepted;
+        this.day = day;
+        this.timeInterval = timeInterval;
     }
 
     public Integer getConsultationID() {
@@ -123,6 +135,22 @@ public class Consultation implements Serializable {
 
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getTimeInterval() {
+        return timeInterval;
+    }
+
+    public void setTimeInterval(String timeInterval) {
+        this.timeInterval = timeInterval;
     }
 
     public Customer getCustomerID() {

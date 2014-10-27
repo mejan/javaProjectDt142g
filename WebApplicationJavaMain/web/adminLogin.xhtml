@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Admin login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/admin.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <body>
+        <div class="container">
+            <form action="j_security_check" method="POST">
+                <div class="form-group">
+                    <label>Användarnamn</label>
+                    <input type="text" class="form-control" name="j_username" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label>Lösenord</label>
+                    <input type="password" class="form-control" name="j_password" required="true" />
+                </div>
+                <input type="submit" value="Logga in" class="btn btn-success" />
+            </form>
+        </div>
+    </body>
+</html>

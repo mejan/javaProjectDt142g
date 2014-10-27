@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package se.miun.projectjava.entitys;
 
 import java.io.Serializable;
@@ -16,13 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Henke
+ * @author Max
  */
 @Entity
 @Table(name = "news")
@@ -42,17 +40,17 @@ public class News implements Serializable {
     @Column(name = "newsID")
     private Integer newsID;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 250)
     @Column(name = "newsText")
     private String newsText;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 250)
     @Column(name = "newsImage")
     private String newsImage;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 250)
     @Column(name = "newsName")
     private String newsName;

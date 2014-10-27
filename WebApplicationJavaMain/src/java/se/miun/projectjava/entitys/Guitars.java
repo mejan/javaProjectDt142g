@@ -9,7 +9,10 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author antondahlin
+ * @author Max
  */
 @Entity
 @Table(name = "Guitars")
@@ -35,8 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Guitars implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "guitarrID")
     private Integer guitarrID;
     @Basic(optional = false)
@@ -62,6 +65,11 @@ public class Guitars implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "imagePath")
     private String imagePath;
+/*    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "image")
+    private byte[] image;*/
 
     public Guitars() {
     }
@@ -70,13 +78,14 @@ public class Guitars implements Serializable {
         this.guitarrID = guitarrID;
     }
 
-    public Guitars(Integer guitarrID, String name, int price, String description, boolean sold, String imagePath) {
+    public Guitars(Integer guitarrID, String name, int price, String description, boolean sold, String imagePath, byte[] image) {
         this.guitarrID = guitarrID;
         this.name = name;
         this.price = price;
         this.description = description;
         this.sold = sold;
         this.imagePath = imagePath;
+        //this.image = image;
     }
 
     public Integer getGuitarrID() {
@@ -127,6 +136,14 @@ public class Guitars implements Serializable {
         this.imagePath = imagePath;
     }
 
+    /*public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }*/
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -150,6 +167,12 @@ public class Guitars implements Serializable {
     @Override
     public String toString() {
         return "se.miun.projectjava.entitys.Guitars[ guitarrID=" + guitarrID + " ]";
+    }
+    
+    public String isSold(){
+        if(this.sold)
+            return "Såld";
+        return "";
     }
     
 }
